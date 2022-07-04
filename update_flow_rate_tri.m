@@ -28,7 +28,7 @@ other_elem = candidate_elem(opt.mesh.elem_including_inlet_edge(candidate_elem)==
 for i = 1 : length(inlet_elem)
     elem_i = opt.mesh.elem(inlet_elem(i),:);
     node_i = opt.mesh.node(elem_i,:);
-    vi = velocity_centre_tri(u(elem_i),node_i,K(inlet_elem(i),:),darcy);
+    vi = velocity_centre_tri(u(elem_i),node_i,K(inlet_elem(i),:),darcy, darcy.phi(inlet_elem(i)));
     Q(elem_i) = Q(elem_i) + local_flux_tri_inlet(node_i,vi,fFactor(elem_i),opt.bndry.inlet_flag(elem_i),opt.mesh.bndry_nodes(elem_i),darcy);
 end
 
@@ -36,7 +36,7 @@ for i = 1 : length(other_elem)
     elem_idx = other_elem(i);
     elem_i = opt.mesh.elem(elem_idx,:);
     node_i = opt.mesh.node(elem_i,:);
-    vi = velocity_centre_tri(u(elem_i),node_i,K(elem_idx,:),darcy);
+    vi = velocity_centre_tri(u(elem_i),node_i,K(elem_idx,:),darcy, darcy.phi(elem_idx));
    
     
     Q(elem_i) = Q(elem_i) + local_flux_tri(...
