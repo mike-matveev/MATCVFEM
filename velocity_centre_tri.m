@@ -1,4 +1,4 @@
-function v = velocity_centre_tri(p,x,K,darcy_para)
+function v = velocity_centre_tri(p,x,K,darcy_para, phi)
 % M = [ones(3,1) x];
 % Mi = inv(M);
 % dp = Mi(2:3,:)*p;
@@ -8,7 +8,7 @@ function v = velocity_centre_tri(p,x,K,darcy_para)
 % x(1,1)*x(2,2) - x(2,1)*x(1,2) - x(1,1)*x(3,2) + x(3,1)*x(1,2) + x(2,1)*x(3,2) - x(3,1)*x(2,2)
 detM = x(1,1)*x(2,2) - x(2,1)*x(1,2) - x(1,1)*x(3,2) + x(3,1)*x(1,2) + x(2,1)*x(3,2) - x(3,1)*x(2,2);
  
-v = -1/(detM*darcy_para.mu*darcy_para.phi)*...
+v = -1/(detM*darcy_para.mu * phi)*...
     [K(1)*(p(1)*(x(2,2) - x(3,2)) - p(2)*(x(1,2) - x(3,2)) + p(3)*(x(1,2) - x(2,2))) - K(3)*(p(1)*(x(2,1) - x(3,1)) - p(2)*(x(1,1) - x(3,1)) + p(3)*(x(1,1) - x(2,1)));...
      K(3)*(p(1)*(x(2,2) - x(3,2)) - p(2)*(x(1,2) - x(3,2)) + p(3)*(x(1,2) - x(2,2))) - K(2)*(p(1)*(x(2,1) - x(3,1)) - p(2)*(x(1,1) - x(3,1)) + p(3)*(x(1,1) - x(2,1)))];
  
