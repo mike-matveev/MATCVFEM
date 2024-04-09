@@ -1,3 +1,5 @@
+![image](https://github.com/mike-matveev/MATCVFEM/assets/5619766/43c3f1d2-af7b-4c43-8734-f42151c13352)
+
 # MATLAB toolbox for the control volume finite element method (CVFEM)
 MATCVFEM is a free set of MATLAB functions for the numericalsolution of moving boundary problem using the control volume finite element method.
 ## Download and Installation
